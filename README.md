@@ -1,0 +1,2 @@
+# prolog-problems
+declarative programming 
