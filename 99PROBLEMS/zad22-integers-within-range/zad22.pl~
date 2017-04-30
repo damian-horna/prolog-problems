@@ -1,0 +1,2 @@
+range(X,X,[X]).
+range(X,Y,[X|T]) :- range(X1,Y,T),X1 is X+1.

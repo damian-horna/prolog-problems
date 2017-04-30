@@ -1,0 +1,18 @@
+pack([X],[[X]]).
+pack([X,X|T],[[X|L]|L1]) :- pack([X|T],[L|L1]).
+pack([X,Y|T],[[X]|L]) :- X\=Y,pack([Y|T],L).
+
+encodep([],[]).
+encodep([A|B],[H1|T1]) :- count(A,H1),encodep(B,T1).
+
+encode([X],[[1,X]]).
+encode([H|T],[H1|T1]):- pack([H|T],[A|B]), encodep([A|B],[H1|T1]).
+
+count([H|T],[X,H]) :- length([H|T],X).
+
+encode_modified(X,Y) :- encode(X,Z),encode_modified(X,Z,Y).
+encode_modified(_,[],[]).
+encode_modified(L1,[He|Te],[Hw|Tw]) :- check(He,Hw), encode_modified(L1,Te,Tw).
+
+check([1,X],X) :- !.
+check([X,Y],[X,Y]).

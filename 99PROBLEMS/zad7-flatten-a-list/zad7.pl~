@@ -1,0 +1,4 @@
+my_flatten(X,[X]) :- is_list(X),!,fail.
+my_flatten(X,[X]).
+my_flatten([],[]).
+my_flatten([H|T],L) :- my_flatten(H,X),my_flatten(T,Z),append(X,Z,L).

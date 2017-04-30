@@ -1,0 +1,2 @@
+palindrome([_]) :- !.
+palindrome([X,X]).
